@@ -1,0 +1,2 @@
+CREATE DATABASE boletim
+    DEFAULT CHARACTER SET = 'utf8mb4';
