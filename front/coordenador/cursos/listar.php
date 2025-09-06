@@ -64,7 +64,7 @@
           </div>
         </div>
       </nav>
-      
+
       <div class="card shadow-sm" style="margin-top: 60px;">
         <div class="card-header bg-secondary text-white fs-4">
           Cursos
@@ -80,8 +80,8 @@
               </tr>
             </thead>
             <tbody>
-              <?php 
-              include_once '../../../back/coordenador/cursos/listar-cursos.php';
+              <?php
+              include_once '../../../back/coordenador/cursos/tratar-listagem.php';
               $cursos = listarCursos();
 
               foreach ($cursos as $curso): ?>
@@ -90,28 +90,24 @@
                   <td><?php echo htmlspecialchars($curso['nome']); ?></td>
                   <td><?php echo htmlspecialchars($curso['descricao']); ?></td>
                   <td>
-                    <a class="btn btn-secondary btn-sm me-1" href="../../../back/coordenador/cursos/editar-cursos.php?<?php echo $curso['id']; ?>">
-                      <i class="bi bi-pencil"></i> Editar
-                    </a>
-                    <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Excluir</button>
+                    <!-- Formulário de edição -->
+                    <form method="get" action="editar.php" style="display:inline;">
+                      <input type="hidden" name="id" value="<?php echo $curso['id']; ?>">
+                      <button class="btn btn-secondary btn-sm me-1" type="submit">
+                        <i class="bi bi-pencil"></i> Editar
+                      </button>
+                    </form>
+
+                    <!-- Formulário de exclusão -->
+                    <form method="get" action="tratar-exclusao.php" style="display:inline;">
+                      <input type="hidden" name="id" value="<?php echo $curso['id']; ?>">
+                      <button class="btn btn-danger btn-sm me-1" type="submit">
+                        <i class="bi bi-trash"></i> Excluir
+                      </button>
+                    </form>
                   </td>
                 </tr>
               <?php endforeach; ?>
-
-
-              <!-- <tr>
-              <td>Maria Souza</td>
-              <td>2021002</td>
-              <td>1B</td>
-              <td>1B</td>
-              <td>1B</td>
-              <td>
-                <button type="button" class="btn btn-secondary btn-sm me-1"><i class="bi bi-pencil"></i>
-                  Editar</button>
-                <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Excluir</button>
-              </td>
-            </tr> -->
-              <!-- Adicione mais alunos conforme necessário -->
             </tbody>
           </table>
   </main>
