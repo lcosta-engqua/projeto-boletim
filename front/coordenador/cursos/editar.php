@@ -6,7 +6,8 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <title>Coordenação</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <title>Form lista</title>
 </head>
 
 <body>
@@ -31,7 +32,7 @@
                 <a class="nav-link active" aria-current="page" href="#">Alunos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="../../back/coordenador/cursos/listar-cursos.php">Cursos</a>
+                <a class="nav-link disabled" aria-current="page" href="#">Cursos</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">Turmas</a>
@@ -42,7 +43,7 @@
             </ul>
             <form class="d-flex" role="search">
               <input class="form-control me-2" type="search" placeholder="Pesquise aqui" aria-label="Search" />
-              <button class="btn btn-outline-success" type="submit">
+              <button class="btn btn-outline-secondary" type="submit">
                 Pesquisar
               </button>
             </form>
@@ -53,7 +54,9 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
                   <li><a class="dropdown-item" href="#">Perfil</a></li>
-                  <li><hr class="dropdown-divider"></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
                   <li><a class="dropdown-item text-danger" href="#">Sair</a></li>
                 </ul>
               </li>
@@ -61,6 +64,56 @@
           </div>
         </div>
       </nav>
+      
+      <div class="card shadow-sm" style="margin-top: 60px;">
+        <div class="card-header bg-secondary text-white fs-4">
+          Cursos
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-striped table-bordered rounded">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php 
+              include_once '../../../back/coordenador/cursos/listar-cursos.php';
+              $cursos = listarCursos();
+
+              foreach ($cursos as $curso): ?>
+                <tr>
+                  <td><?php echo htmlspecialchars($curso['id']); ?></td>
+                  <td><?php echo htmlspecialchars($curso['nome']); ?></td>
+                  <td><?php echo htmlspecialchars($curso['descricao']); ?></td>
+                  <td>
+                    <a class="btn btn-secondary btn-sm me-1" href="../../../back/coordenador/cursos/editar-cursos.php?<?php echo $curso['id']; ?>">
+                      <i class="bi bi-pencil"></i> Editar
+                    </a>
+                    <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Excluir</button>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+
+
+              <!-- <tr>
+              <td>Maria Souza</td>
+              <td>2021002</td>
+              <td>1B</td>
+              <td>1B</td>
+              <td>1B</td>
+              <td>
+                <button type="button" class="btn btn-secondary btn-sm me-1"><i class="bi bi-pencil"></i>
+                  Editar</button>
+                <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Excluir</button>
+              </td>
+            </tr> -->
+              <!-- Adicione mais alunos conforme necessário -->
+            </tbody>
+          </table>
   </main>
   <!-- Bootstrap JS (bundle includes Popper) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
