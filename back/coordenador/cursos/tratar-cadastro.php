@@ -47,7 +47,7 @@ function persistirDados(){
   $stmt = $conn->prepare("INSERT INTO cursos(nome, descricao, ativo) VALUES(?,?,?)");
   $stmt->execute([$nome, $descricao, $status]);
 
-  header('Location: ../../../front/coordenador/cursos/listar.php');
+  header('Location: ../../../front/coordenador/cursos/listar.php?sucesso=1');
   exit;
 }
 
