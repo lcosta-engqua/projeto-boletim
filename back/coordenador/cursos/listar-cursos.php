@@ -1,7 +1,10 @@
 <?php
 include_once '../../../db/conexao.php';
 
-echo "Lista";
+function listarCursos(){
+  $sql = "SELECT * FROM cursos";
+  
+}
 
 
 ?>
