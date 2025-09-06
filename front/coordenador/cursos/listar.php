@@ -64,7 +64,7 @@
           </div>
         </div>
       </nav>
-      <!-- Validação mensagem sucesso -->
+      <!-- Validação mensagens sucesso -->
       <?php if (isset($_GET['sucesso']) && $_GET['sucesso'] == 1): ?>
         <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
           <div id="liveToast" class="toast show " role="alert" aria-live="assertive" aria-atomic="true">
@@ -73,27 +73,42 @@
               <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
             <div class="toast-body">
-              <strong>Cadastro realizado com sucesso!</strong>
+              Cadastro realizado com sucesso!
             </div>
           </div>
         </div>
       <?php endif; ?>
-      <!-- FIM Validação mensagem sucesso -->
+
+      <?php if (isset($_GET['sucesso']) && $_GET['sucesso'] == 2): ?>
+        <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+          <div id="liveToast" class="toast show " role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+              <strong class="me-auto text-success">Sucesso</strong>
+              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+              Cadastro atualizado com sucesso!
+            </div>
+          </div>
+        </div>
+      <?php endif; ?>
+      <!-- FIM Validações mensagem sucesso -->
+
+      <!-- Tabela de Cursos -->
       <div class="card shadow-sm" style="margin-top: 60px;">
         <div class="card-header bg-secondary text-white fs-4 d-flex justify-content-between align-items-center">
           <span>Cursos</span>
-          <a href="cadastrar.php" class="btn btn-primary">Cadastrar Curso</a>
+          <a href="cadastrar.php" class="btn btn-primary"><i class="bi bi-plus-square"></i> Cadastrar Curso</a>
         </div>
 
         <div class="card-body p-0">
-
           <table class="table table-striped rounded">
-
             <thead>
               <tr>
                 <th>#</th>
                 <th>Nome</th>
                 <th>Descrição</th>
+                <th>Status</th>
                 <th>Ações</th>
               </tr>
             </thead>
@@ -107,6 +122,7 @@
                   <td><?php echo htmlspecialchars($curso['id']); ?></td>
                   <td><?php echo htmlspecialchars($curso['nome']); ?></td>
                   <td><?php echo htmlspecialchars($curso['descricao']); ?></td>
+                  <td><?php echo htmlspecialchars($curso['ativo'] == 'S') ? 'Ativo' : 'Inativo';; ?></td>
                   <td>
                     <!-- Formulário de edição -->
                     <form method="get" action="editar.php" style="display:inline;">
@@ -128,6 +144,7 @@
               <?php endforeach; ?>
             </tbody>
           </table>
+          <!-- FIM da Tabela de Cursos -->
   </main>
   <!-- Bootstrap JS (bundle includes Popper) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">

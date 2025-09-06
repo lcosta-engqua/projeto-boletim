@@ -67,6 +67,7 @@
       <div class="card shadow-sm" style="margin-top: 60px;">
         <div class="card-header bg-secondary text-white fs-4 d-flex justify-content-between align-items-center">
           <span>Cursos</span>
+          <a href="listar.php" class="btn btn-primary"><i class="bi bi-arrow-return-left"></i>  Voltar</a>
         </div>
         <div class="card-body">
           <form action="../../../back/coordenador/cursos/tratar-cadastro.php" method="post">
@@ -92,7 +93,7 @@
               </div>
 
             </div>
-            <button type="submit" class="btn btn-secondary"><i class="bi bi-file-earmark-plus"></i> Cadastrar</button>
+            <button type="submit" class="btn btn-secondary"><i class="bi bi-plus-square"></i> Cadastrar</button>
           </form>
         </div>
   </main>

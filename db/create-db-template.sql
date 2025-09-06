@@ -43,3 +43,4 @@ CREATE DATABASE boletim
     INSERT INTO cursos VALUES(3, 'PHP', 'Destinado ao ensinamento de Programação em PHP', 1, null, null);
 
     SELECT * FROM cursos;
+    UPDATE cursos SET ativo = 'N' WHERE id = 1;
