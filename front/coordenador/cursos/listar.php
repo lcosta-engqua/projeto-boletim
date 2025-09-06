@@ -66,11 +66,12 @@
       </nav>
 
       <div class="card shadow-sm" style="margin-top: 60px;">
-        <div class="card-header bg-secondary text-white fs-4">
-          Cursos
+        <div class="card-header bg-secondary text-white fs-4 d-flex justify-content-between align-items-center">
+          <span>Cursos</span>
+          <a href="cadastrar.php" class="btn btn-primary">Cadastrar Curso</a>
         </div>
         <div class="card-body p-0">
-          <table class="table table-striped table-bordered rounded">
+          <table class="table table-striped rounded">
             <thead>
               <tr>
                 <th>#</th>
