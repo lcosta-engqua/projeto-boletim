@@ -64,56 +64,90 @@
           </div>
         </div>
       </nav>
-      
       <div class="card shadow-sm" style="margin-top: 60px;">
         <div class="card-header bg-secondary text-white fs-4">
-          Cursos
+          Editar Curso
         </div>
-        <div class="card-body p-0">
-          <table class="table table-striped table-bordered rounded">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Nome</th>
-                <th>Descrição</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php 
-              include_once '../../../back/coordenador/cursos/listar-cursos.php';
-              $cursos = listarCursos();
+        <div class="card-body">
+          <!-- <form action="#" method="post">
+            <?php
+                include_once '../../../back/coordenador/cursos/tratar-edicao.php';
+                $cursos = listarCursos();
 
-              foreach ($cursos as $curso): ?>
-                <tr>
-                  <td><?php echo htmlspecialchars($curso['id']); ?></td>
-                  <td><?php echo htmlspecialchars($curso['nome']); ?></td>
-                  <td><?php echo htmlspecialchars($curso['descricao']); ?></td>
-                  <td>
-                    <a class="btn btn-secondary btn-sm me-1" href="../../../back/coordenador/cursos/editar-cursos.php?<?php echo $curso['id']; ?>">
-                      <i class="bi bi-pencil"></i> Editar
-                    </a>
-                    <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Excluir</button>
-                  </td>
-                </tr>
-              <?php endforeach; ?>
+                foreach ($cursos as $curso): ?>
+                  
+                    <?php $id = $curso['id']; ?>
+                    <?php $nome = $curso['nome']; ?>
+                    <?php $descricao = $curso['descricao']; ?>
 
 
-              <!-- <tr>
-              <td>Maria Souza</td>
-              <td>2021002</td>
-              <td>1B</td>
-              <td>1B</td>
-              <td>1B</td>
-              <td>
-                <button type="button" class="btn btn-secondary btn-sm me-1"><i class="bi bi-pencil"></i>
-                  Editar</button>
-                <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Excluir</button>
-              </td>
-            </tr> -->
-              <!-- Adicione mais alunos conforme necessário -->
-            </tbody>
-          </table>
+               <?php endforeach; ?>  -->
+
+            <?php include_once '../../../back/coordenador/cursos/tratar-edicao.php'; 
+              $curso = retornaCursoSelecionado();
+              var_dump($curso);
+            
+            ?>
+            <div class="row mb-3">
+              
+              <div class="col-md-6">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" value="<?php var_dump(retornaCursoSelecionado()); echo $curso['id'] ?>" required>
+              </div>
+              <div class="col-md-6">
+                <label for="matricula" class="form-label">Matrícula</label>
+                <input type="text" class="form-control" id="matricula" name="matricula" required>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="turma" class="form-label">Turma</label>
+              <input type="text" class="form-control" id="turma" name="turma" required>
+            </div>
+            <div class="mb-3">
+              <select class="form-select w-auto" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="checkDefault">
+                <label class="form-check-label" for="checkDefault">
+                  Default checkbox
+                </label>
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="form-check">
+                <fieldset class="row mb-3">
+                  <div class="col-sm-10">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1"
+                        checked>
+                      <label class="form-check-label" for="gridRadios1">
+                        First radio
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                      <label class="form-check-label" for="gridRadios2">
+                        Second radio
+                      </label>
+                    </div>
+                    <div class="form-check disabled">
+                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3"
+                        disabled>
+                      <label class="form-check-label" for="gridRadios3">
+                        Third disabled radio
+                      </label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+              <button type="submit" class="btn btn-secondary"><i class="bi bi-person-plus"></i> Cadastrar</button>
+          </form>
   </main>
   <!-- Bootstrap JS (bundle includes Popper) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

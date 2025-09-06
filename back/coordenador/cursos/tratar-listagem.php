@@ -11,7 +11,7 @@ function listarCursos()
 
     $result = $stmt->fetchAll();
     return $result ?? [];
-    print_r($result);
+    // print_r($result);
 
   } catch (Exception $e) {
     echo "Error: " . $e->getMessage();
