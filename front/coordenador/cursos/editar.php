@@ -54,7 +54,9 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
                   <li><a class="dropdown-item" href="#">Perfil</a></li>
-                  <li><hr class="dropdown-divider"></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
                   <li><a class="dropdown-item text-danger" href="#">Sair</a></li>
                 </ul>
               </li>
@@ -62,6 +64,7 @@
           </div>
         </div>
       </nav>
+      
       <div class="card shadow-sm" style="margin-top: 60px;">
         <div class="card-header bg-secondary text-white fs-4">
           Cursos
@@ -70,40 +73,44 @@
           <table class="table table-striped table-bordered rounded">
             <thead>
               <tr>
+                <th>#</th>
                 <th>Nome</th>
-                <th>Matrícula</th>
-                <th>Turma</th>
-                <th>Turma2</th>
-                <th>Turma3</th>
+                <th>Descrição</th>
                 <th>Ações</th>
               </tr>
             </thead>
             <tbody>
-              
-              <tr>
-                <td>João Silva</td>
-                <td>2021001</td>
-                <td>1A</td>
-                <td>1A</td>
-                <td>1A</td>
-                <td>
-                  <button type="button" class="btn btn-secondary btn-sm me-1"><i class="bi bi-pencil"></i>
-                    Editar</button>
-                  <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Excluir</button>
-                </td>
-              </tr>
-              <tr>
-                <td>Maria Souza</td>
-                <td>2021002</td>
-                <td>1B</td>
-                <td>1B</td>
-                <td>1B</td>
-                <td>
-                  <button type="button" class="btn btn-secondary btn-sm me-1"><i class="bi bi-pencil"></i>
-                    Editar</button>
-                  <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Excluir</button>
-                </td>
-              </tr>
+              <?php 
+              include_once '../../../back/coordenador/cursos/listar-cursos.php';
+              $cursos = listarCursos();
+
+              foreach ($cursos as $curso): ?>
+                <tr>
+                  <td><?php echo htmlspecialchars($curso['id']); ?></td>
+                  <td><?php echo htmlspecialchars($curso['nome']); ?></td>
+                  <td><?php echo htmlspecialchars($curso['descricao']); ?></td>
+                  <td>
+                    <a class="btn btn-secondary btn-sm me-1" href="../../../back/coordenador/cursos/editar-cursos.php?<?php echo $curso['id']; ?>">
+                      <i class="bi bi-pencil"></i> Editar
+                    </a>
+                    <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Excluir</button>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+
+
+              <!-- <tr>
+              <td>Maria Souza</td>
+              <td>2021002</td>
+              <td>1B</td>
+              <td>1B</td>
+              <td>1B</td>
+              <td>
+                <button type="button" class="btn btn-secondary btn-sm me-1"><i class="bi bi-pencil"></i>
+                  Editar</button>
+                <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Excluir</button>
+              </td>
+            </tr> -->
               <!-- Adicione mais alunos conforme necessário -->
             </tbody>
           </table>
