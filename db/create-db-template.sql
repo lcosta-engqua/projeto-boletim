@@ -41,6 +41,18 @@ CREATE DATABASE boletim
     INSERT INTO cursos VALUES(1, 'Java', 'Destinado ao ensinamento de Programação em Java', 1, null, null);
     INSERT INTO cursos VALUES(2, 'Dados', 'Destinado ao ensinamento de Análise de Dados', 1, null, null);
     INSERT INTO cursos VALUES(3, 'PHP', 'Destinado ao ensinamento de Programação em PHP', 1, null, null);
-
-    SELECT * FROM cursos;
     UPDATE cursos SET ativo = 'N' WHERE id = 1;
+    SELECT * FROM cursos;
+
+    -- 1:N Um curso pode ter várias turmas
+    CREATE TABLE turmas(
+      id INT PRIMARY KEY AUTO_INCREMENT,
+      nome VARCHAR(100) NOT NULL,
+      descricao VARCHAR(100),
+      ativo ENUM('S', 'N') NOT NULL,
+      curso_id INT,
+      data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+      data_atualizacao DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+      FOREIGN KEY (curso_id) REFERENCES cursos(id)
+    );
+    SELECT * FROM turmas;
