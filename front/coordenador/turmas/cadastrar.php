@@ -61,7 +61,7 @@
       <div class="card shadow-sm" style="margin-top: 60px;">
         <div class="card-header bg-secondary text-white fs-4 d-flex justify-content-between align-items-center">
           <span>Cadastrar Turma</span>
-          <a href="listar.php" class="btn btn-primary"><i class="bi bi-arrow-return-left"></i>  Voltar</a>
+          <a href="listar.php" class="btn btn-primary"><i class="bi bi-arrow-return-left"></i> Voltar</a>
         </div>
         <div class="card-body">
           <form action="../../../back/coordenador/turmas/tratar-cadastro.php" method="post">
@@ -71,13 +71,40 @@
                 <input type="text" class="form-control" id="nome" name="nome" placeholder="Preencha com o nome da turma" required>
               </div>
               <div class="col-md-3">
-                <label for="nome" class="form-label">Curso</label>
-                <select class="form-select w-auto" aria-label="Default select example">
-                <option selected>Selecione um curso</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
+                <label for="curso" class="form-label">Curso</label>
+                <?php
+                include_once '../../../back/coordenador/turmas/tratar-cadastro.php';
+                $cursos = retornarCursos();
+                var_dump($cursos);
+                echo "<br>";
+                echo "<br>";
+                echo "<br>";
+                echo "Nome do curso:";
+                var_dump($cursos['nome']);
+                // var_dump($curso->$nome);
+
+                // foreach ($cursos as $curso){
+                //   var_dump($curso['id']);
+                //   echo $curso->nome;
+                //   var_dump($curso->$nome);
+                  
+                // }
+                ?>
+                <!-- <select class="form-select w-auto" name="curso" id="curso">
+                  <option selected>Selecione um curso</option>
+                  <?php foreach ($cursos as $curso): ?>
+                    <?php print_r($curso['id']); ?>
+                    <option value="<?php echo htmlspecialchars($curso['id']); ?>">
+                      <?php echo htmlspecialchars($curso['nome']); ?>
+                    </option>
+                  <?php endforeach; ?>
+                </select> -->
+
+
+                <!-- <option value="">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option> -->
+                <!-- </select> -->
               </div>
               <div class="col-md-3">
                 <label>Status</label>
