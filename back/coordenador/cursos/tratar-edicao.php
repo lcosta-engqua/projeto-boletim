@@ -23,7 +23,6 @@ function retornaCursoSelecionado(){
 }
 
 function atualizarDados(){
-  // $dados = retornaCursoSelecionado();
   $id = $_POST['id'];
   $nome = $_POST['nome'];
   $descricao = $_POST['descricao'];

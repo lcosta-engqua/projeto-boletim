@@ -92,6 +92,20 @@
           </div>
         </div>
       <?php endif; ?>
+
+      <?php if (isset($_GET['sucesso']) && $_GET['sucesso'] == 3): ?>
+        <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+          <div id="liveToast" class="toast show " role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+              <strong class="me-auto text-success">Sucesso</strong>
+              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+              Cadastro excluído com sucesso!
+            </div>
+          </div>
+        </div>
+      <?php endif; ?>
       <!-- FIM Validações mensagem sucesso -->
 
       <!-- Tabela de Cursos -->
@@ -133,7 +147,7 @@
                     </form>
 
                     <!-- Formulário de exclusão -->
-                    <form method="get" action="tratar-exclusao.php" style="display:inline;">
+                    <form method="post" action="../../../back/coordenador/cursos/tratar-exclusao.php" style="display:inline;">
                       <input type="hidden" name="id" value="<?php echo $curso['id']; ?>">
                       <button class="btn btn-danger btn-sm me-1" type="submit">
                         <i class="bi bi-trash"></i> Excluir
