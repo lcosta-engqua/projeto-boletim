@@ -2,8 +2,6 @@ CREATE DATABASE boletim
     DEFAULT CHARACTER SET = 'utf8mb4';
 
     USE boletim;
-
-    -- DROP TABLE usuarios;
     CREATE TABLE usuarios(
       id INT PRIMARY KEY AUTO_INCREMENT,
       nome VARCHAR(100) NOT NULL,
@@ -31,6 +29,21 @@ CREATE DATABASE boletim
       data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
       data_atualizacao DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     );
+    SELECT * FROM cursos;
+
+    -- 1:N Um curso pode ter várias turmas
+    CREATE TABLE turmas(
+      id INT PRIMARY KEY AUTO_INCREMENT,
+      nome VARCHAR(100) NOT NULL,
+      descricao VARCHAR(100),
+      ativo ENUM('S', 'N') NOT NULL,
+      curso_id INT,
+      data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+      data_atualizacao DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+      FOREIGN KEY (curso_id) REFERENCES cursos(id)
+    );
+    SELECT * FROM turmas;
+
 
     SELECT * FROM cursos;
 
@@ -40,4 +53,5 @@ CREATE DATABASE boletim
 
     SELECT * FROM cursos;
     UPDATE cursos SET ativo = 'N' WHERE id = 1;
+
 
