@@ -43,3 +43,15 @@ CREATE DATABASE boletim
       FOREIGN KEY (curso_id) REFERENCES cursos(id)
     );
     SELECT * FROM turmas;
+
+
+    SELECT * FROM cursos;
+
+    INSERT INTO cursos VALUES(1, 'Java', 'Destinado ao ensinamento de Programação em Java', 1, null, null);
+    INSERT INTO cursos VALUES(2, 'Dados', 'Destinado ao ensinamento de Análise de Dados', 1, null, null);
+    INSERT INTO cursos VALUES(3, 'PHP', 'Destinado ao ensinamento de Programação em PHP', 1, null, null);
+
+    SELECT * FROM cursos;
+    UPDATE cursos SET ativo = 'N' WHERE id = 1;
+
+
