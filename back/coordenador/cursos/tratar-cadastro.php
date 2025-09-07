@@ -21,11 +21,7 @@ function capturarDadosForm(){
   if(!empty($sessao)){
     $nome = $sessao['nome'];
     $descricao = $sessao['descricao'];
-    if(isset($_POST['status']) ? 1 : 0){
-      $status = $_POST['status'];
-    }else{
-      $status = null;
-    }
+    $status = isset($_POST['status']) ? 'S' : 'N';
     return [
       'nome' => $nome,
       'descricao' => $descricao,
@@ -47,7 +43,7 @@ function persistirDados(){
   $stmt = $conn->prepare("INSERT INTO cursos(nome, descricao, ativo) VALUES(?,?,?)");
   $stmt->execute([$nome, $descricao, $status]);
 
-  header('Location: ../../../front/coordenador/cursos/listar.php');
+  header('Location: ../../../front/coordenador/cursos/listar.php?sucesso=1');
   exit;
 }
 

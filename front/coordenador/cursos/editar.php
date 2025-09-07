@@ -7,7 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-  <title>Form lista</title>
+  <title>Coordenação</title>
 </head>
 
 <body>
@@ -65,89 +65,44 @@
         </div>
       </nav>
       <div class="card shadow-sm" style="margin-top: 60px;">
-        <div class="card-header bg-secondary text-white fs-4">
-          Editar Curso
+        <div class="card-header bg-secondary text-white fs-4 d-flex justify-content-between align-items-center">
+          <span>Cursos</span>
+          <a href="listar.php" class="btn btn-primary"><i class="bi bi-arrow-return-left"></i>  Voltar</a>
         </div>
         <div class="card-body">
-          <!-- <form action="#" method="post">
-            <?php
-                include_once '../../../back/coordenador/cursos/tratar-edicao.php';
-                $cursos = listarCursos();
-
-                foreach ($cursos as $curso): ?>
-                  
-                    <?php $id = $curso['id']; ?>
-                    <?php $nome = $curso['nome']; ?>
-                    <?php $descricao = $curso['descricao']; ?>
-
-
-               <?php endforeach; ?>  -->
-
-            <?php include_once '../../../back/coordenador/cursos/tratar-edicao.php'; 
-              $curso = retornaCursoSelecionado();
-              var_dump($curso);
-            
+          <form action="../../../back/coordenador/cursos/tratar-edicao.php" method="post">
+            <?php include_once '../../../back/coordenador/cursos/tratar-edicao.php';
+              $dados = retornaCursoSelecionado();
             ?>
             <div class="row mb-3">
-              
+              <div class="col-md-2">
+                <label for="id" class="form-label">ID</label>
+                <input type="text" class="form-control" id="id" name="id" value="<?php echo $dados['id']; ?>" readonly>
+              </div>
               <div class="col-md-6">
                 <label for="nome" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome" value="<?php var_dump(retornaCursoSelecionado()); echo $curso['id'] ?>" required>
+                <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $dados['nome']; ?>" required>
               </div>
-              <div class="col-md-6">
-                <label for="matricula" class="form-label">Matrícula</label>
-                <input type="text" class="form-control" id="matricula" name="matricula" required>
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="turma" class="form-label">Turma</label>
-              <input type="text" class="form-control" id="turma" name="turma" required>
-            </div>
-            <div class="mb-3">
-              <select class="form-select w-auto" aria-label="Default select example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-            <div class="mb-3">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="checkDefault">
-                <label class="form-check-label" for="checkDefault">
-                  Default checkbox
-                </label>
+              <div class="col-md-4">
+                <label>Status</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="ativo" name="ativo" <?php echo ($dados['ativo'] == 'S') ? 'checked' : ''; ?>>
+                  <label class="form-check-label" for="status">
+                    Ativo
+                  </label>
+                </div>
               </div>
             </div>
             <div class="mb-3">
-              <div class="form-check">
-                <fieldset class="row mb-3">
-                  <div class="col-sm-10">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1"
-                        checked>
-                      <label class="form-check-label" for="gridRadios1">
-                        First radio
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                      <label class="form-check-label" for="gridRadios2">
-                        Second radio
-                      </label>
-                    </div>
-                    <div class="form-check disabled">
-                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3"
-                        disabled>
-                      <label class="form-check-label" for="gridRadios3">
-                        Third disabled radio
-                      </label>
-                    </div>
-                  </div>
-                </fieldset>
+              <div class="form-group">
+                <label for="descricao">Descrição</label>
+                <textarea class="form-control" id="descricao" name="descricao" rows="3" required><?php echo $dados['descricao']; ?></textarea>
               </div>
-              <button type="submit" class="btn btn-secondary"><i class="bi bi-person-plus"></i> Cadastrar</button>
+
+            </div>
+            <button type="submit" class="btn btn-secondary"><i class="bi bi-pencil-square"></i> Atualizar</button>
           </form>
+        </div>
   </main>
   <!-- Bootstrap JS (bundle includes Popper) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
