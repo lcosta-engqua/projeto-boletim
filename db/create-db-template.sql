@@ -62,12 +62,14 @@ CREATE DATABASE boletim
     SELECT * FROM cursos;
     UPDATE cursos SET ativo = 'N' WHERE id = 1;
 
+    DROP TABLE disciplinas;
     CREATE TABLE disciplinas(
       id INT PRIMARY KEY AUTO_INCREMENT,
       nome VARCHAR(50) NOT NULL,
       descricao VARCHAR(50),
       carga_horaria INT,
       curso_id INT,
+      ativo ENUM('S', 'N') NOT NULL,
       data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
       data_atualizacao DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
       FOREIGN KEY (curso_id) REFERENCES cursos(id)
