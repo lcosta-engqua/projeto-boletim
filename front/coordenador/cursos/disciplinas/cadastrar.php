@@ -70,13 +70,17 @@
                 <label for="nome" class="form-label">Nome</label>
                 <input type="text" class="form-control" id="nome" name="nome" placeholder="Preencha com o nome da turma" required>
               </div>
+              <div class="col-md-2">
+                <label for="nome" class="form-label">Carga horária</label>
+                <input type="text" class="form-control" id="carga_horaria" name="carga_horaria" placeholder="Preencha com a carga horária" required>
+              </div>
               <div class="col-md-3">
                 <label for="curso" class="form-label">Curso</label>
-                <?php
+                <!-- <?php
                 include_once '../../../back/coordenador/turmas/tratar-cadastro.php';
                 $cursos = retornarCursos();
-                ?>
-                <select class="form-select w-auto" name="curso_id" id="curso_id">
+                ?> -->
+                <!-- <select class="form-select w-auto" name="curso_id" id="curso_id">
                   <option selected>Selecione um curso</option>
                   <?php foreach ($cursos as $curso): ?>
                     <?php print_r($curso['id']); ?>
@@ -84,9 +88,9 @@
                       <?php echo htmlspecialchars($curso['nome']); ?>
                     </option>
                   <?php endforeach; ?>
-                </select>
+                </select> -->
               </div>
-              <div class="col-md-3">
+              <div class="col-md-1">
                 <label>Status</label>
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="1" id="status" name="status" checked>
@@ -101,7 +105,6 @@
                 <label for="descricao">Descrição</label>
                 <textarea class="form-control" id="descricao" name="descricao" rows="3" placeholder="Preencha com a descrição da turma" required></textarea>
               </div>
-
             </div>
             <button type="submit" class="btn btn-secondary"><i class="bi bi-plus-square"></i> Cadastrar</button>
           </form>
