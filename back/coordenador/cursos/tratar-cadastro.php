@@ -21,11 +21,7 @@ function capturarDadosForm(){
   if(!empty($sessao)){
     $nome = $sessao['nome'];
     $descricao = $sessao['descricao'];
-    if(isset($_POST['status']) ? 1 : 0){
-      $status = $_POST['status'];
-    }else{
-      $status = null;
-    }
+    $status = isset($_POST['status']) ? 'S' : 'N';
     return [
       'nome' => $nome,
       'descricao' => $descricao,
