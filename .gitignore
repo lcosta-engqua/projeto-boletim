@@ -1,0 +1,38 @@
+# .gitignore para projeto-boletim
+# Dependências do Composer
+/vendor/
+/composer.lock
+
+# Arquivos de configuração sensíveis
+/db/conexao.php
+
+# Arquivos de banco de dados e templates
+/db/*.sql
+
+# Diretórios de cache e temporários
+*.log
+*.tmp
+.cache/
+
+# Arquivos do XAMPP e ambiente local
+*.DS_Store
+*.env
+
+# Diretórios de IDEs
+.vscode/
+.idea/
+
+# Outros arquivos e pastas que não devem subir
+/node_modules/
+
+# Ignorar binários
+*.exe
+*.dll
+*.so
+*.bin
+
+# Ignorar arquivos de upload temporários
+uploads/
+
+# Ignorar arquivos de configuração
+.php-cs-fixer.php

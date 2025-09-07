@@ -43,6 +43,14 @@ CREATE DATABASE boletim
       FOREIGN KEY (curso_id) REFERENCES cursos(id)
     );
     SELECT * FROM turmas;
+    SELECT turma.id, turma.nome, turma.descricao, curso.nome, turma.ativo FROM turmas turma
+    INNER JOIN cursos curso ON curso.id = turma.curso_id;
+
+    SELECT turma.id, turma.nome, turma.descricao, curso.nome, turma.ativo FROM turmas turma
+    INNER JOIN cursos curso ON curso.id = turma.curso_id
+    WHERE turma.id = 5;
+
+    UPDATE turmas SET ativo = 'N' WHERE id = 1;
 
 
     SELECT * FROM cursos;
@@ -53,5 +61,4 @@ CREATE DATABASE boletim
 
     SELECT * FROM cursos;
     UPDATE cursos SET ativo = 'N' WHERE id = 1;
-
 
