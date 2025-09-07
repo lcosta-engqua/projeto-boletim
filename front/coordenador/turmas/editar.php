@@ -64,10 +64,11 @@
           <a href="listar.php" class="btn btn-primary"><i class="bi bi-arrow-return-left"></i>  Voltar</a>
         </div>
         <div class="card-body">
-          <form action="../../../back/coordenador/cursos/tratar-edicao.php" method="post">
+          <form action="../../../back/coordenador/turmas/tratar-edicao.php" method="post">
             <?php include_once '../../../back/coordenador/turmas/tratar-edicao.php';
-                  include_once '../../../back/coordenador/turmas/tratar-listagem.php';
+                  include_once '../../../back/coordenador/turmas/tratar-cadastro.php';
               $turma = retornarTurma();
+              $cursos = retornarCursos();
             ?>
             <div class="row mb-3">
               <div class="col-md-1">
@@ -76,16 +77,24 @@
               </div>
               <div class="col-md-4">
                 <label for="nome" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $turma['nome_turma']; ?>" required>
+                <input type="text" class="form-control" id="nome_turma" name="nome_turma" value="<?php echo $turma['nome_turma']; ?>" required>
               </div>
               <div class="col-md-4">
-                <label for="nome" class="form-label">Curso</label>
-                <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $turma['nome_curso']; ?>" required>
+                <label for="curso" class="form-label">Curso</label>
+                <select class="form-select w-auto" name="id_curso" id="id_curso">
+                  <option value="<?php echo htmlspecialchars($turma['id_curso']); ?>" selected><?php echo htmlspecialchars($turma['nome_curso']); ?></option>
+                  <?php foreach ($cursos as $curso): ?>
+                    <?php print_r($curso['id']); ?>
+                    <option value="<?php echo htmlspecialchars($curso['id']); ?>">
+                      <?php echo htmlspecialchars($curso['nome']); ?>
+                    </option>
+                  <?php endforeach; ?>
+                </select>
               </div>
               <div class="col-md-3">
                 <label>Status</label>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="ativo" name="ativo" <?php echo ($turma['ativo'] == 'S') ? 'checked' : ''; ?>>
+                  <input class="form-check-input" type="checkbox" id="status" name="status" <?php echo ($turma['ativo'] == 'S') ? 'checked' : ''; ?>>
                   <label class="form-check-label" for="status">
                     Ativo
                   </label>
@@ -95,7 +104,7 @@
             <div class="mb-3">
               <div class="form-group">
                 <label for="descricao">Descrição</label>
-                <textarea class="form-control" id="descricao" name="descricao" rows="3" required><?php echo $turmas['descricao']; ?></textarea>
+                <textarea class="form-control" id="descricao" name="descricao" rows="3" required><?php echo $turma['descricao']; ?></textarea>
               </div>
 
             </div>
