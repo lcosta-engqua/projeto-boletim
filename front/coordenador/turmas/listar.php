@@ -143,8 +143,8 @@
                     </form>
 
                     <!-- Formulário de exclusão -->
-                    <form method="post" action="../../../back/coordenador/cursos/tratar-exclusao.php" style="display:inline;">
-                      <input type="hidden" name="id" value="<?php echo $curso['id']; ?>">
+                    <form method="post" action="../../../back/coordenador/turmas/tratar-exclusao.php" style="display:inline;">
+                      <input type="hidden" id="turma_id" name="turma_id" value="<?php echo $turma['id']; ?>">
                       <button class="btn btn-danger btn-sm me-1" type="submit">
                         <i class="bi bi-trash"></i> Excluir
                       </button>
