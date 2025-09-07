@@ -123,21 +123,20 @@
             </thead>
             <tbody>
               <?php
-              include_once '../../../back/coordenador/cursos/tratar-listagem.php';
-              $busca = isset($_GET['busca']) ? $_GET['busca'] : '';
-              $cursos = listarCursos($busca);
+              include_once '../../../back/coordenador/turmas/tratar-listagem.php';
+              $turmas = retornarTurmas();
 
-              foreach ($cursos as $curso): ?>
+              foreach ($turmas as $turma): ?>
                 <tr>
-                  <td><?php echo htmlspecialchars($curso['id']); ?></td>
-                  <td><?php echo htmlspecialchars($curso['nome']); ?></td>
-                  <td><?php echo htmlspecialchars($curso['nome']); ?></td>
-                  <td><?php echo htmlspecialchars($curso['descricao']); ?></td>
-                  <td><?php echo htmlspecialchars($curso['ativo'] == 'S') ? 'Ativo' : 'Inativo'; ?></td>
+                  <td><?php echo htmlspecialchars($turma['id']); ?></td>
+                  <td><?php echo htmlspecialchars($turma['nome_turma']); ?></td>
+                  <td><?php echo htmlspecialchars($turma['descricao']); ?></td>
+                  <td><?php echo htmlspecialchars($turma['nome_curso']); ?></td>
+                  <td><?php echo htmlspecialchars($turma['ativo'] == 'S') ? 'Ativo' : 'Inativo'; ?></td>
                   <td>
                     <!-- Formulário de edição -->
                     <form method="get" action="editar.php" style="display:inline;">
-                      <input type="hidden" name="id" value="<?php echo $curso['id']; ?>">
+                      <input type="hidden" name="id" value="<?php echo $turma['id']; ?>">
                       <button class="btn btn-secondary btn-sm me-1" type="submit">
                         <i class="bi bi-pencil"></i> Editar
                       </button>
@@ -159,11 +158,6 @@
   </main>
   <!-- Bootstrap JS (bundle includes Popper) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    var toastEl = document.getElementById('liveToast');
-    if (toastEl) {
-      var toast = new bootstrap.Toast(toastEl);
-      toast.show();
-    }
   </script>
 </body>
 

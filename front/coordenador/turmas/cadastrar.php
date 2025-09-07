@@ -35,7 +35,7 @@
                 <a class="nav-link active" aria-current="page" href="#">Cursos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link inactive" aria-current="page" href="cadastrar.php">Turmas</a>
+                <a class="nav-link inactive" aria-current="page" href="listar.php">Turmas</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">Disciplinas</a>
@@ -75,22 +75,8 @@
                 <?php
                 include_once '../../../back/coordenador/turmas/tratar-cadastro.php';
                 $cursos = retornarCursos();
-                var_dump($cursos);
-                echo "<br>";
-                echo "<br>";
-                echo "<br>";
-                echo "Nome do curso:";
-                var_dump($cursos['nome']);
-                // var_dump($curso->$nome);
-
-                // foreach ($cursos as $curso){
-                //   var_dump($curso['id']);
-                //   echo $curso->nome;
-                //   var_dump($curso->$nome);
-                  
-                // }
                 ?>
-                <!-- <select class="form-select w-auto" name="curso" id="curso">
+                <select class="form-select w-auto" name="curso_id" id="curso_id">
                   <option selected>Selecione um curso</option>
                   <?php foreach ($cursos as $curso): ?>
                     <?php print_r($curso['id']); ?>
@@ -98,13 +84,7 @@
                       <?php echo htmlspecialchars($curso['nome']); ?>
                     </option>
                   <?php endforeach; ?>
-                </select> -->
-
-
-                <!-- <option value="">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option> -->
-                <!-- </select> -->
+                </select>
               </div>
               <div class="col-md-3">
                 <label>Status</label>
